@@ -1,0 +1,11 @@
+/* dark theme style */
+/* common style */
+/* light theme style */
+
+.theme-light .qq {
+  background-color: green;
+}
+
+.theme-dark .qq {
+  background-color: red;
+}
