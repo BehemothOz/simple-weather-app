@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import classNames from "classnames";
 import "./App.css";
 import { cities } from "./shared/cities";
 import { composeUrl } from "./helpers/composeUrl";
 import WeatherDisplay from "./WeatherDisplay";
+import ButtonCity from "./ButtonCity";
 
 class App extends Component {
   state = {
@@ -25,21 +27,36 @@ class App extends Component {
   };
 
   render() {
+    const themeStyle = classNames({
+      "app-container": true,
+      "theme-dark": this.state.theme === "dark",
+      "theme-light": this.state.theme === "light"
+    });
+
+    const citiesList = cities.map(city => (
+      <ButtonCity
+        key={city.id}
+        city={city}
+        getWeatherForCity={this.getWeatherForCity}
+      />
+    ));
+
     return (
-      <div
-        className={`app-container ${
-          this.state.theme === `dark` ? `theme-dark` : `theme-light`
-        }`}
-      >
-        {cities.map(city => (
-          <button key={city.id} onClick={this.getWeatherForCity(city.id)}>
-            {city.name}
-          </button>
-        ))}
-        <button onClick={this.switchTheme}>Button</button>
+      <div className={themeStyle}>
+        <div className="cities-group">{citiesList}</div>
+        <button className="btnq" onClick={this.handleSwitchTheme}>
+          Button
+        </button>
 
         {/* <WeatherDisplay qq={this.state.activePlace} /> */}
       </div>
+      // <div class="main-container">
+      //   <div class="content-container">
+      //     <div class="content-area">
+      //       <button className="btn btn-link">Button 1</button>
+      //     </div>
+      //   </div>
+      // </div>
     );
   }
 }
