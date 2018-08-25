@@ -1,0 +1,19 @@
+/* common style */
+.icon-button {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+/* dark theme style */
+.theme-light .icon-button {
+  background-image: url("image/sun.svg");
+}
+
+/* light theme style */
+.theme-dark .icon-button {
+  background-image: url("image/moon.svg");
+}

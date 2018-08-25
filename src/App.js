@@ -5,6 +5,7 @@ import { cities } from "./shared/cities";
 import { composeUrl } from "./helpers/composeUrl";
 import WeatherDisplay from "./WeatherDisplay";
 import ButtonCity from "./ButtonCity";
+import ButtonSwitch from "./ButtonSwitch";
 
 class App extends Component {
   state = {
@@ -30,7 +31,7 @@ class App extends Component {
     const themeStyle = classNames({
       "app-container": true,
       "theme-dark": this.state.theme === "dark",
-      "theme-light": this.state.theme === "light"
+      "theme-light": this.state.theme !== "dark"
     });
 
     const citiesList = cities.map(city => (
@@ -44,11 +45,11 @@ class App extends Component {
     return (
       <div className={themeStyle}>
         <div className="cities-group">{citiesList}</div>
-        <button className="btnq" onClick={this.handleSwitchTheme}>
-          Button
-        </button>
+        <div className="button-switch-container">
+          <ButtonSwitch switchTheme={this.handleSwitchTheme} />
+        </div>
 
-        {/* <WeatherDisplay qq={this.state.activePlace} /> */}
+        <WeatherDisplay />
       </div>
       // <div class="main-container">
       //   <div class="content-container">

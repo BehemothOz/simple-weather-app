@@ -4,12 +4,13 @@ import "./style.css";
 export default class WeatherDisplay extends Component {
   render() {
     // console.log(this.props);
-    const { qq: weatherData } = this.props;
-    console.log(weatherData);
+    // const { qq: weatherData } = this.props;
+    // console.log(weatherData);
 
     return (
       <div>
         <h1>
+          Hi! My name id Vlada!
           {/* {weather.main} in {weatherData.name} */}
           {/* <img src={iconUrl} alt={weatherData.description} /> */}
         </h1>
