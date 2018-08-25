@@ -1,0 +1,28 @@
+/* common style */
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  height: 1.5rem;
+  padding: 0 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5rem;
+  overflow: hidden;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1;
+  border-radius: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+/* dark theme style */
+.theme-dark .button {
+  color: #49afd9;
+}
+
+/* light theme style */
+.theme-light .button {
+  color: #007cbb;
+}
