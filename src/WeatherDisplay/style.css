@@ -1,7 +1,8 @@
 /* common style */
 .weather-info {
-  padding-top: 45px;
+  /* padding-top: 45px; */
   text-align: center;
+  height: 100%;
 }
 
 .info-line.title {

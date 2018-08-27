@@ -6,12 +6,14 @@ import { composeUrl } from "./helpers/composeUrl";
 import WeatherDisplay from "./WeatherDisplay";
 import ButtonCity from "./ButtonCity";
 import ButtonSwitch from "./ButtonSwitch";
+import Loading from "./Loading";
 
 class App extends Component {
   state = {
     theme: `light`,
     currentCityId: 536203, // id city
-    cityWeather: null
+    cityWeather: null,
+    isLoading: false
   };
 
   componentDidMount() {
@@ -20,12 +22,20 @@ class App extends Component {
 
   getWeatherForCity = param => () => {
     const url = composeUrl(`id`, param);
+    this.setState({ isLoading: false });
+
     fetch(url)
       .then(res => res.json())
       .then(json => {
-        this.setState({ cityWeather: json });
+        this.setState({ cityWeather: json }, this.hideLoadingIndicator);
       });
   };
+
+  hideLoadingIndicator() {
+    setTimeout(() => {
+      this.setState({ isLoading: true });
+    }, 500);
+  }
 
   handleSwitchTheme = () => {
     this.setState({ theme: this.state.theme === `dark` ? `ligth` : `dark` });
@@ -46,9 +56,15 @@ class App extends Component {
       />
     ));
 
-    const weatherDisplay = this.state.cityWeather ? (
+    // const weatherDisplay = this.state.cityWeather ? (
+    //   <WeatherDisplay weatherData={this.state.cityWeather} />
+    // ) : null;
+
+    const weatherDisplay = this.state.isLoading ? (
       <WeatherDisplay weatherData={this.state.cityWeather} />
-    ) : null;
+    ) : (
+      <Loading />
+    );
 
     return (
       <div className={themeStyle}>
@@ -56,7 +72,7 @@ class App extends Component {
         <div className="button-switch-container">
           <ButtonSwitch switchTheme={this.handleSwitchTheme} />
         </div>
-        {weatherDisplay}
+        <div className="info-container">{weatherDisplay}</div>
       </div>
     );
   }
