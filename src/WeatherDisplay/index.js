@@ -12,16 +12,18 @@ export default function WeatherDisplay(props) {
       <div className="info-line title">
         <b>{weather.main}</b> in <b>{weatherData.name}</b>
       </div>
-      <p className="info-line">
+      <div className="info-line current">
         <b>Current</b>: {weatherData.main.temp}°
-      </p>
-      <p className="info-line info-small">
+      </div>
+      <div className="info-line info-small">
         <b>High</b>: {weatherData.main.temp_max}°
-      </p>
-      <p className="info-line info-small">Low: {weatherData.main.temp_min}°</p>
-      <p className="info-line info-small">
-        Wind Speed: {weatherData.wind.speed} mi/hr
-      </p>
+      </div>
+      <div className="info-line info-small">
+        <b>Low</b>: {weatherData.main.temp_min}°
+      </div>
+      <div className="info-line info-small">
+        <b>Wind Speed</b>: {weatherData.wind.speed} mi/hr
+      </div>
     </div>
   );
 }

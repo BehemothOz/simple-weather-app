@@ -1,12 +1,22 @@
 /* common style */
 .weather-info {
-  /* padding-top: 45px; */
-  text-align: center;
   height: 100%;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.info-line {
+  margin-bottom: 7px;
 }
 
 .info-line.title {
-  font-size: 18px;
+  margin-bottom: 10px;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+.info-line.current {
+  margin-bottom: 30px;
 }
 
 .info-line.info-small {

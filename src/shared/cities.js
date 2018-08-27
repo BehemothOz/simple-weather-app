@@ -1,6 +1,6 @@
 export const cities = [
   {
-    id: 5601538,
+    id: 524901,
     name: "Moscow",
     country: "US",
     coord: {
