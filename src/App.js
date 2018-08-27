@@ -15,7 +15,6 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // console.log(1);
     this.getWeatherForCity(this.state.currentCityId)();
   }
 
@@ -25,7 +24,6 @@ class App extends Component {
       .then(res => res.json())
       .then(json => {
         this.setState({ cityWeather: json });
-        // console.log(json);
       });
   };
 
@@ -60,14 +58,6 @@ class App extends Component {
         </div>
         {weatherDisplay}
       </div>
-      // <div class="main-container">
-      //   <div class="content-container">
-      //     <div class="content-area">
-      //       <button className="btn btn-link">Button 1</button>
-      //       <p>dsfdsfdsf dsf ds</p>
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 }
