@@ -1,6 +1,6 @@
 /* common style */
 .weather-info {
-  height: 100%;
+  height: calc(100% - 50px);
   padding-top: 50px;
   text-align: center;
 }
