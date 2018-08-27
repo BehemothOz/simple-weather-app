@@ -10,16 +10,22 @@ import ButtonSwitch from "./ButtonSwitch";
 class App extends Component {
   state = {
     theme: `light`,
-    currentCity: 536203 // id city
+    currentCityId: 536203, // id city
+    cityWeather: null
   };
+
+  componentDidMount() {
+    // console.log(1);
+    this.getWeatherForCity(this.state.currentCityId)();
+  }
 
   getWeatherForCity = param => () => {
     const url = composeUrl(`id`, param);
     fetch(url)
       .then(res => res.json())
       .then(json => {
-        // this.setState({ activePlace: json });
-        console.log(json);
+        this.setState({ cityWeather: json });
+        // console.log(json);
       });
   };
 
@@ -42,19 +48,23 @@ class App extends Component {
       />
     ));
 
+    const weatherDisplay = this.state.cityWeather ? (
+      <WeatherDisplay weatherData={this.state.cityWeather} />
+    ) : null;
+
     return (
       <div className={themeStyle}>
         <div className="cities-group">{citiesList}</div>
         <div className="button-switch-container">
           <ButtonSwitch switchTheme={this.handleSwitchTheme} />
         </div>
-
-        <WeatherDisplay />
+        {weatherDisplay}
       </div>
       // <div class="main-container">
       //   <div class="content-container">
       //     <div class="content-area">
       //       <button className="btn btn-link">Button 1</button>
+      //       <p>dsfdsfdsf dsf ds</p>
       //     </div>
       //   </div>
       // </div>

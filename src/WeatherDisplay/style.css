@@ -1,0 +1,29 @@
+/* common style */
+.weather-info {
+  padding-top: 45px;
+  text-align: center;
+}
+
+.info-line.title {
+  font-size: 18px;
+}
+
+.info-line.info-small {
+  font-size: 14px;
+}
+
+.info-line b {
+  font-weight: 500;
+}
+
+/* light theme style */
+.theme-light .info-line {
+  color: #565656;
+}
+
+/* dark theme style */
+.theme-dark .info-line {
+  color: #adbbc4;
+}
+
+/*  dark */
