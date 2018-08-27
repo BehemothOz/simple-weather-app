@@ -2,13 +2,14 @@ import React from "react";
 import "./style.css";
 
 export default function WeatherDisplay(props) {
+  console.log(props);
   const { weatherData } = props;
   const weather = { ...weatherData.weather }[0];
   const icon = "http://openweathermap.org/img/w/" + weather.icon + ".png";
 
   return (
     <div className="weather-info">
-      <img src={icon} alt={weatherData.description} />
+      <img className="icon" src={icon} alt={weatherData.description} />
       <div className="info-line title">
         <b>{weather.main}</b> in <b>{weatherData.name}</b>
       </div>
