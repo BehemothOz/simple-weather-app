@@ -8,6 +8,8 @@ import ButtonCity from "./ButtonCity";
 import ButtonSwitch from "./ButtonSwitch";
 import Loading from "./Loading";
 
+import ReactCSSTransitionGroup from "react-addons-css-transition-group"; // ES6
+
 class App extends Component {
   state = {
     theme: `light`,
@@ -61,9 +63,9 @@ class App extends Component {
     // ) : null;
 
     const weatherDisplay = this.state.isLoading ? (
-      <WeatherDisplay weatherData={this.state.cityWeather} />
+      <WeatherDisplay weatherData={this.state.cityWeather} key={2} />
     ) : (
-      <Loading />
+      <Loading key={1} />
     );
 
     return (
@@ -72,7 +74,15 @@ class App extends Component {
         <div className="button-switch-container">
           <ButtonSwitch switchTheme={this.handleSwitchTheme} />
         </div>
-        <div className="info-container">{weatherDisplay}</div>
+        <div className="info-container">
+          <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionEnterTimeout={300}
+            transitionLeaveTimeout={300}
+          >
+            {weatherDisplay}
+          </ReactCSSTransitionGroup>
+        </div>
       </div>
     );
   }
