@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import classNames from "classnames";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+
 import "./App.css";
+
 import { cities } from "./shared/cities";
 import { composeUrl } from "./helpers/composeUrl";
-import WeatherDisplay from "./WeatherDisplay";
-import ButtonCity from "./ButtonCity";
-import ButtonSwitch from "./ButtonSwitch";
-import Loading from "./Loading";
-
-import ReactCSSTransitionGroup from "react-addons-css-transition-group"; // ES6
+import WeatherDisplay from "./components/WeatherDisplay";
+import ButtonCity from "./components/ButtonCity";
+import ButtonSwitch from "./components/ButtonSwitch";
+import Loading from "./components/Loading";
 
 class App extends Component {
   state = {
