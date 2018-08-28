@@ -58,14 +58,13 @@ class App extends Component {
       />
     ));
 
-    // const weatherDisplay = this.state.cityWeather ? (
-    //   <WeatherDisplay weatherData={this.state.cityWeather} />
-    // ) : null;
-
     const weatherDisplay = this.state.isLoading ? (
-      <WeatherDisplay weatherData={this.state.cityWeather} key={2} />
+      <WeatherDisplay
+        weatherData={this.state.cityWeather}
+        key="weatherDisplay"
+      />
     ) : (
-      <Loading key={1} />
+      <Loading key="loading" />
     );
 
     return (
@@ -76,8 +75,8 @@ class App extends Component {
         </div>
         <div className="info-container">
           <ReactCSSTransitionGroup
-            transitionName="example"
-            transitionEnterTimeout={300}
+            transitionName="switch"
+            transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
           >
             {weatherDisplay}

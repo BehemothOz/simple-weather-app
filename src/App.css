@@ -36,21 +36,21 @@
   background-color: #fafafa;
 }
 
-/* animation */
-.example-enter {
+/* animations */
+.switch-enter {
   opacity: 0.01;
 }
 
-.example-enter.example-enter-active {
+.switch-enter.switch-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
 
-.example-leave {
+.switch-leave {
   opacity: 1;
 }
 
-.example-leave.example-leave-active {
+.switch-leave.switch-leave-active {
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
