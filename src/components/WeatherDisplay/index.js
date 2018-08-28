@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import "./style.css";
 
 export default function WeatherDisplay(props) {
@@ -27,3 +29,7 @@ export default function WeatherDisplay(props) {
     </div>
   );
 }
+
+PropTypes.WeatherDisplay = {
+  weatherData: PropTypes.object.isRequired
+};
