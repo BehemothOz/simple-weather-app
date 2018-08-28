@@ -22,7 +22,15 @@
   color: #49afd9;
 }
 
+.theme-dark .button.active {
+  color: #e8db0a;
+}
+
 /* light theme style */
 .theme-light .button {
   color: #007cbb;
+}
+
+.theme-light .button.active {
+  color: #d66702;
 }

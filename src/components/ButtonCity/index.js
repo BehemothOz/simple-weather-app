@@ -4,8 +4,12 @@ import "./style.css";
 
 export default function ButtonCity(props) {
   const { id, name } = props.city;
+  console.log(props.currentCityId === id);
   return (
-    <button className="button" onClick={props.getWeatherForCity(id)}>
+    <button
+      className={`button ${props.currentCityId === id ? "active" : ""}`}
+      onClick={props.getWeatherForCity(id)}
+    >
       {name}
     </button>
   );

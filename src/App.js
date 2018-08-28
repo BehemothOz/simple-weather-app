@@ -25,7 +25,7 @@ class App extends Component {
 
   getWeatherForCity = param => () => {
     const url = composeUrl(`id`, param);
-    this.setState({ isLoading: false });
+    this.setState({ currentCityId: param, isLoading: false });
 
     fetch(url)
       .then(res => res.json())
@@ -55,6 +55,7 @@ class App extends Component {
       <ButtonCity
         key={city.id}
         city={city}
+        currentCityId={this.state.currentCityId}
         getWeatherForCity={this.getWeatherForCity}
       />
     ));

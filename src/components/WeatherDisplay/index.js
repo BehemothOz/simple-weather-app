@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 
 export default function WeatherDisplay(props) {
-  console.log(props);
   const { weatherData } = props;
   const weather = { ...weatherData.weather }[0];
   const icon = "https://openweathermap.org/img/w/" + weather.icon + ".png";
