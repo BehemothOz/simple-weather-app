@@ -4,7 +4,6 @@ import "./style.css";
 
 export default function ButtonCity(props) {
   const { id, name } = props.city;
-  console.log(props.currentCityId === id);
   return (
     <button
       className={`button ${props.currentCityId === id ? "active" : ""}`}

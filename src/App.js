@@ -25,12 +25,14 @@ class App extends Component {
 
   getWeatherForCity = param => () => {
     const url = composeUrl(`id`, param);
-    this.setState({ currentCityId: param, isLoading: false });
 
     fetch(url)
       .then(res => res.json())
       .then(json => {
-        this.setState({ cityWeather: json }, this.hideLoadingIndicator);
+        this.setState(
+          { cityWeather: json, currentCityId: param, isLoading: false },
+          this.hideLoadingIndicator
+        );
       });
   };
 
