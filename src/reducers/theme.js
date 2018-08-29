@@ -1,11 +1,9 @@
-const initialState = {
-  theme: "dark"
-};
+const initialState = 'dark';
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case "SET_THEME": {
-      return { ...state, theme: action.theme };
+    case 'SET_THEME': {
+      return state === 'dark' ? 'light' : 'dark';
     }
     default:
       return state;

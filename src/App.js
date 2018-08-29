@@ -18,7 +18,6 @@ import Loading from './components/Loading';
 
 class App extends Component {
   state = {
-    // theme: `light`,
     currentCityId: 536203, // id city
     cityWeather: null,
     isLoading: false
@@ -47,80 +46,73 @@ class App extends Component {
   //   }, 500);
   // }
 
-  // handleSwitchTheme = () => {
-  //   this.setState({ theme: this.state.theme === `dark` ? `ligth` : `dark` });
-  // };
-
-  handleSwitchTheme = () => {
-    this.props.pageActions.setTheme(`ligth`);
-  };
+  renderCitiesList() {
+    return cities.map(city => (
+      <ButtonCity
+        key={city.id}
+        city={city}
+        currentCityId={this.state.currentCityId}
+        getWeatherForCity={this.getWeatherForCity}
+      />
+    ));
+  }
 
   render() {
-    console.log(this.props);
+    const {
+      theme,
+      themeActions: { setTheme }
+    } = this.props;
+
+    const { isLoading, cityWeather } = this.state;
 
     const themeStyle = classNames({
       'app-container': true,
-      'theme-dark': this.props.theme === 'dark',
-      'theme-light': this.props.theme !== 'dark'
+      [`theme-${theme}`]: true
     });
 
-    // const citiesList = cities.map(city => (
-    //   <ButtonCity
-    //     key={city.id}
-    //     city={city}
-    //     currentCityId={this.state.currentCityId}
-    //     getWeatherForCity={this.getWeatherForCity}
-    //   />
-    // ));
-
-    // const weatherDisplay = this.state.isLoading ? (
-    //   <WeatherDisplay
-    //     weatherData={this.state.cityWeather}
-    //     key="weatherDisplay"
-    //   />
-    // ) : (
-    //   <Loading key="loading" />
-    // );
+    const weatherDisplay = isLoading ? (
+      <WeatherDisplay weatherData={cityWeather} key="weatherDisplay" />
+    ) : (
+      <Loading key="loading" />
+    );
 
     return (
       <div className={themeStyle}>
-        {/* <div className="cities-group">{citiesList}</div> */}
+        <div className="cities-group">{this.renderCitiesList()}</div>
         <div className="button-switch-container">
-          {/* <ButtonSwitch switchTheme={this.handleSwitchTheme} /> */}
-          {/* <ButtonSwitch switchTheme={this.props.pageActions.setTheme} /> */}
+          <ButtonSwitch switchTheme={setTheme} />
         </div>
         <button>inc</button>
         <button>reset</button>
         <div />
-        {/* <div className="info-container">
+        <div className="info-container">
           <ReactCSSTransitionGroup
             transitionName="switch"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
-          > */}
-        {/* {weatherDisplay} */}
-        {/* </ReactCSSTransitionGroup> */}
-        {/* </div> */}
+          >
+            {weatherDisplay}
+          </ReactCSSTransitionGroup>
+        </div>
       </div>
     );
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     theme: state.theme.theme
-//   };
-// }
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    theme: state.theme
+  };
+}
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     pageActions: bindActionCreators(themeActions, dispatch)
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    themeActions: bindActionCreators(themeActions, dispatch)
+  };
+}
 
-// export default connect(
-//   mapStateToProps
-//   // mapDispatchToProps
-// )(App);
-
-export default App;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

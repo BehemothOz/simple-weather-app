@@ -1,8 +1,7 @@
-// import { SET_YEAR } from '../constants/Page';
-
-export function setTheme(theme) {
+export const setTheme = () => {
+  // console.log(`action`, theme);
   return {
-    type: "SET_THEME",
-    payload: theme
+    type: 'SET_THEME'
+    // payload: theme
   };
-}
+};
