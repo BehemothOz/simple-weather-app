@@ -106,6 +106,7 @@ function mapStateToProps(state) {
   };
 }
 
+// TODO WHAT?
 function mapDispatchToProps(dispatch) {
   return {
     themeActions: bindActionCreators(themeActions, dispatch)
