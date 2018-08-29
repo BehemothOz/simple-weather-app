@@ -1,7 +1,8 @@
-import { combineReducers } from "redux";
-import theme from "./theme";
+import { combineReducers } from 'redux';
+import theme from './theme';
+import counter from './counter';
 
-// Тут мы комбинируем redusers (если их несколько)
 export default combineReducers({
-  theme
+  theme,
+  counter: counter
 });

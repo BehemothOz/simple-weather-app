@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import classNames from "classnames";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import { bindActionCreators } from "redux";
+import React, { Component } from 'react';
+import classNames from 'classnames';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { bindActionCreators } from 'redux';
 
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import * as themeActions from "./actions/themeActions";
+import * as themeActions from './actions/themeActions';
 
-import "./App.css";
+import './App.css';
 
-import { cities } from "./shared/cities";
-import { composeUrl } from "./helpers/composeUrl";
-import WeatherDisplay from "./components/WeatherDisplay";
-import ButtonCity from "./components/ButtonCity";
-import ButtonSwitch from "./components/ButtonSwitch";
-import Loading from "./components/Loading";
+import { cities } from './shared/cities';
+import { composeUrl } from './helpers/composeUrl';
+import WeatherDisplay from './components/WeatherDisplay';
+import ButtonCity from './components/ButtonCity';
+import ButtonSwitch from './components/ButtonSwitch';
+import Loading from './components/Loading';
 
 class App extends Component {
   state = {
@@ -59,9 +59,9 @@ class App extends Component {
     console.log(this.props);
 
     const themeStyle = classNames({
-      "app-container": true,
-      "theme-dark": this.props.theme === "dark",
-      "theme-light": this.props.theme !== "dark"
+      'app-container': true,
+      'theme-dark': this.props.theme === 'dark',
+      'theme-light': this.props.theme !== 'dark'
     });
 
     // const citiesList = cities.map(city => (
@@ -86,9 +86,12 @@ class App extends Component {
       <div className={themeStyle}>
         {/* <div className="cities-group">{citiesList}</div> */}
         <div className="button-switch-container">
-          <ButtonSwitch switchTheme={this.handleSwitchTheme} />
+          {/* <ButtonSwitch switchTheme={this.handleSwitchTheme} /> */}
           {/* <ButtonSwitch switchTheme={this.props.pageActions.setTheme} /> */}
         </div>
+        <button>inc</button>
+        <button>reset</button>
+        <div />
         {/* <div className="info-container">
           <ReactCSSTransitionGroup
             transitionName="switch"
@@ -103,21 +106,21 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    theme: state.theme.theme
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     theme: state.theme.theme
+//   };
+// }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    pageActions: bindActionCreators(themeActions, dispatch)
-  };
-}
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     pageActions: bindActionCreators(themeActions, dispatch)
+//   };
+// }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+// export default connect(
+//   mapStateToProps
+//   // mapDispatchToProps
+// )(App);
 
-// export default App;
+export default App;
