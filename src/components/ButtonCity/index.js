@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import "./style.css";
+import './style.css';
 
 export default function ButtonCity(props) {
   const { id, name } = props.city;
@@ -14,7 +14,13 @@ export default function ButtonCity(props) {
   });
 
   return (
-    <button className={styleButton} onClick={props.getWeatherForCity(id)}>
+    // <button className={styleButton} onClick={props.getWeatherForCity(id)}>
+    //   {name}
+    // </button>
+    <button
+      className={styleButton}
+      onClick={props.getWeatherForCity(props.city.newId)}
+    >
       {name}
     </button>
   );

@@ -38,13 +38,24 @@ class App extends Component {
     //       this.hideLoadingIndicator
     //     );
     //   });
+
+    const url = `https://jsonplaceholder.typicode.com/posts/${param}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(json => {
+        this.setState(
+          { cityWeather: json, currentCityId: param, isLoading: false },
+          this.hideLoadingIndicator
+        );
+      });
   };
 
-  // hideLoadingIndicator() {
-  //   setTimeout(() => {
-  //     this.setState({ isLoading: true });
-  //   }, 500);
-  // }
+  hideLoadingIndicator() {
+    setTimeout(() => {
+      this.setState({ isLoading: true });
+    }, 500);
+  }
 
   renderCitiesList() {
     return cities.map(city => (
@@ -59,8 +70,8 @@ class App extends Component {
 
   render() {
     const {
-      theme,
-      themeActions: { setTheme }
+      theme
+      // themeActions: { setTheme }
     } = this.props;
 
     const { isLoading, cityWeather } = this.state;
@@ -80,7 +91,8 @@ class App extends Component {
       <div className={themeStyle}>
         <div className="cities-group">{this.renderCitiesList()}</div>
         <div className="button-switch-container">
-          <ButtonSwitch switchTheme={setTheme} />
+          {/* <ButtonSwitch switchTheme={setTheme} /> */}
+          <ButtonSwitch switchTheme={this.props.switchTheme} />
         </div>
         <button>inc</button>
         <button>reset</button>
@@ -99,6 +111,8 @@ class App extends Component {
   }
 }
 
+// Чтение состояния
+// Трансформация текущего Redux-состояния хранилища в props
 function mapStateToProps(state) {
   console.log(state);
   return {
@@ -106,13 +120,15 @@ function mapStateToProps(state) {
   };
 }
 
-// TODO WHAT?
+// Функция отправки действия (dispatch actions)
 function mapDispatchToProps(dispatch) {
   return {
-    themeActions: bindActionCreators(themeActions, dispatch)
+    // themeActions: bindActionCreators(themeActions, dispatch)
+    switchTheme: () => dispatch(themeActions.setTheme())
   };
 }
 
+// App - ээто контейнер
 export default connect(
   mapStateToProps,
   mapDispatchToProps

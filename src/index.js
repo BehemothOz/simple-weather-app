@@ -8,6 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
 
 import * as counterActions from './actions/counterAction';
+import * as weatherActions from './actions/weatherActions';
 console.log(counterActions);
 
 const store = configureStore();
@@ -33,3 +34,10 @@ registerServiceWorker();
 // store.dispatch({ type: 'sdfdsf_dsfsd' });
 // console.log(6);
 // store.dispatch(counterActions.increment());
+
+// test weather fetch
+// store.subscribe(() => console.log(store.))
+// store.dispatch(weatherActions.selectCity('reactjs'));
+store
+  .dispatch(weatherActions.fetchWeather(2))
+  .then(() => console.log(store.getState()));
