@@ -1,1 +1,1 @@
-// перенести сюда url
+// url for fetch
