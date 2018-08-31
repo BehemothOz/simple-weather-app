@@ -1,5 +1,7 @@
-export const setTheme = () => {
+import * as types from '../constants/actionTypes';
+
+export function setTheme() {
   return {
-    type: 'SET_THEME'
+    type: types.SET_THEME
   };
-};
+}

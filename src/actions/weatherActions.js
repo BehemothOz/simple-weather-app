@@ -1,29 +1,6 @@
 import * as types from '../constants/actionTypes';
 
-/*
-  State
-{
-  selectedCityId: 0, // id city - default 536203
-  cityWeather: null, // object - weather for city
-  isLoading: false
-}
-
-*/
-
-// ----- Взаимодействие с пользователем ---------
-export function selectCity(id) {
-  return {
-    type: types.SELECT_CITY,
-    payload: {
-      id
-    }
-  };
-}
-
-// ------ Сетевые запросы --------
-
-// Запрос
-
+// Request
 export function requestWeather(id) {
   return {
     type: types.REQUEST_WEATHER,
@@ -31,8 +8,7 @@ export function requestWeather(id) {
   };
 }
 
-// Ответ
-
+// Receive
 export function receiveWeather(json) {
   return {
     type: types.RECEIVE_WEATHER,
@@ -42,9 +18,7 @@ export function receiveWeather(json) {
   };
 }
 
-// ----- TODO Обработка ошибок запрос ---------------
-
-// ---- Thunk генератор -----------
+// Thunk генератор
 export function fetchWeather(id) {
   return function(dispatch) {
     dispatch(requestWeather(id));
