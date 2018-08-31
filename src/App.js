@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux';
 
 import { connect } from 'react-redux';
 
-import * as themeActions from './actions/themeActions';
-import * as weatherActions from './actions/weatherActions';
-import * as cityActions from './actions/cityActions';
+// import * as themeActions from './actions/themeActions';
+// import * as weatherActions from './actions/weatherActions';
+// import * as cityActions from './actions/cityActions';
 
 import './App.css';
 
@@ -19,12 +19,6 @@ import ButtonSwitch from './components/ButtonSwitch';
 import Loading from './components/Loading';
 
 class App extends Component {
-  // state = {
-  //   currentCityId: 536203, // id city
-  //   cityWeather: null,
-  //   isLoading: false
-  // };
-
   componentDidMount() {
     // this.getWeatherForCity(this.state.currentCityId)();
   }
@@ -59,22 +53,18 @@ class App extends Component {
   renderCitiesList() {
     return cities.map(city => (
       <ButtonCity
-        key={city.id}
-        city={city}
+        key={city.newId}
+        testId={city.newId}
+        // city={city}
         // currentCityId={this.state.currentCityId}
-        getWeatherForCity={this.props.getWeatherForCity}
+        // getWeatherForCity={this.props.getWeatherForCity}
       />
     ));
   }
 
   render() {
-    // console.log(`props`, this.props);
-    const {
-      theme
-      // themeActions: { setTheme }
-    } = this.props;
-
-    const { isLoading, weatherCity } = this.props;
+    console.log(this.props);
+    const { theme, isLoading, weatherCity } = this.props;
 
     const themeStyle = classNames({
       'app-container': true,
@@ -92,7 +82,7 @@ class App extends Component {
         <div className="cities-group">{this.renderCitiesList()}</div>
         <div className="button-switch-container">
           {/* <ButtonSwitch switchTheme={setTheme} /> */}
-          <ButtonSwitch switchTheme={this.props.switchTheme} />
+          {/* <ButtonSwitch switchTheme={this.props.switchTheme} /> */}
         </div>
         <div />
         <div className="info-container">
@@ -109,29 +99,4 @@ class App extends Component {
   }
 }
 
-// Чтение состояния
-// Трансформация текущего Redux-состояния хранилища в props
-function mapStateToProps(state) {
-  // console.log(state);
-  return {
-    theme: state.theme,
-    selectedCity: state.selectedCity,
-    isLoading: state.weather.isLoading,
-    weatherCity: state.weather.cityWeather
-  };
-}
-
-// Функция отправки действия (dispatch actions)
-function mapDispatchToProps(dispatch) {
-  return {
-    // themeActions: bindActionCreators(themeActions, dispatch)
-    switchTheme: () => dispatch(themeActions.setTheme()),
-    getWeatherForCity: id => dispatch(weatherActions.fetchWeather(id))
-  };
-}
-
-// App - ээто контейнер
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
