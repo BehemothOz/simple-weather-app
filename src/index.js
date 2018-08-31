@@ -7,8 +7,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 import configureStore from './store/configureStore';
 
-import * as weatherActions from './actions/weatherActions';
-
 const store = configureStore();
 
 ReactDOM.render(
@@ -22,6 +20,6 @@ registerServiceWorker();
 // test weather fetch
 // store.subscribe(() => console.log(store.))
 // store.dispatch(weatherActions.selectCity('reactjs'));
-store
-  .dispatch(weatherActions.fetchWeather(2))
-  .then(() => console.log(store.getState()));
+// store
+//   .dispatch(weatherActions.fetchWeather(2))
+//   .then(() => console.log(store.getState()));

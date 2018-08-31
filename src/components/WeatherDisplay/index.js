@@ -5,6 +5,7 @@ import './style.css';
 
 export default function WeatherDisplay(props) {
   const { weatherData } = props;
+  // console.log(`props display`, props);
   // const weather = { ...weatherData.weather }[0];
   // const icon = 'https://openweathermap.org/img/w/' + weather.icon + '.png';
   return (

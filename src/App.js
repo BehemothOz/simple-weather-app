@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as themeActions from './actions/themeActions';
+import * as weatherActions from './actions/weatherActions';
+import * as cityActions from './actions/cityActions';
 
 import './App.css';
 
@@ -17,64 +19,62 @@ import ButtonSwitch from './components/ButtonSwitch';
 import Loading from './components/Loading';
 
 class App extends Component {
-  state = {
-    currentCityId: 536203, // id city
-    cityWeather: null,
-    isLoading: false
-  };
+  // state = {
+  //   currentCityId: 536203, // id city
+  //   cityWeather: null,
+  //   isLoading: false
+  // };
 
   componentDidMount() {
     // this.getWeatherForCity(this.state.currentCityId)();
   }
 
-  getWeatherForCity = param => () => {
-    console.log(param);
-    // const url = composeUrl(`id`, param);
-    // fetch(url)
-    //   .then(res => res.json())
-    //   .then(json => {
-    //     this.setState(
-    //       { cityWeather: json, currentCityId: param, isLoading: false },
-    //       this.hideLoadingIndicator
-    //     );
-    //   });
+  // getWeatherForCity = param => () => {
+  // const url = composeUrl(`id`, param);
+  // fetch(url)
+  //   .then(res => res.json())
+  //   .then(json => {
+  //     this.setState(
+  //       { cityWeather: json, currentCityId: param, isLoading: false },
+  //       this.hideLoadingIndicator
+  //     );
+  //   });
+  // const url = `https://jsonplaceholder.typicode.com/posts/${param}`;
+  // fetch(url)
+  //   .then(res => res.json())
+  //   .then(json => {
+  //     this.setState(
+  //       { cityWeather: json, currentCityId: param, isLoading: false },
+  //       this.hideLoadingIndicator
+  //     );
+  //   });
+  // };
 
-    const url = `https://jsonplaceholder.typicode.com/posts/${param}`;
-
-    fetch(url)
-      .then(res => res.json())
-      .then(json => {
-        this.setState(
-          { cityWeather: json, currentCityId: param, isLoading: false },
-          this.hideLoadingIndicator
-        );
-      });
-  };
-
-  hideLoadingIndicator() {
-    setTimeout(() => {
-      this.setState({ isLoading: true });
-    }, 500);
-  }
+  // hideLoadingIndicator() {
+  //   setTimeout(() => {
+  //     this.setState({ isLoading: true });
+  //   }, 500);
+  // }
 
   renderCitiesList() {
     return cities.map(city => (
       <ButtonCity
         key={city.id}
         city={city}
-        currentCityId={this.state.currentCityId}
-        getWeatherForCity={this.getWeatherForCity}
+        // currentCityId={this.state.currentCityId}
+        getWeatherForCity={this.props.getWeatherForCity}
       />
     ));
   }
 
   render() {
+    // console.log(`props`, this.props);
     const {
       theme
       // themeActions: { setTheme }
     } = this.props;
 
-    const { isLoading, cityWeather } = this.state;
+    const { isLoading, weatherCity } = this.props;
 
     const themeStyle = classNames({
       'app-container': true,
@@ -82,7 +82,7 @@ class App extends Component {
     });
 
     const weatherDisplay = isLoading ? (
-      <WeatherDisplay weatherData={cityWeather} key="weatherDisplay" />
+      <WeatherDisplay weatherData={weatherCity} key="weatherDisplay" />
     ) : (
       <Loading key="loading" />
     );
@@ -96,13 +96,13 @@ class App extends Component {
         </div>
         <div />
         <div className="info-container">
-          <ReactCSSTransitionGroup
+          {/* <ReactCSSTransitionGroup
             transitionName="switch"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
-          >
-            {weatherDisplay}
-          </ReactCSSTransitionGroup>
+          > */}
+          {weatherDisplay}
+          {/* </ReactCSSTransitionGroup> */}
         </div>
       </div>
     );
@@ -112,9 +112,12 @@ class App extends Component {
 // Чтение состояния
 // Трансформация текущего Redux-состояния хранилища в props
 function mapStateToProps(state) {
-  console.log(state);
+  // console.log(state);
   return {
-    theme: state.theme
+    theme: state.theme,
+    selectedCity: state.selectedCity,
+    isLoading: state.weather.isLoading,
+    weatherCity: state.weather.cityWeather
   };
 }
 
@@ -122,7 +125,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     // themeActions: bindActionCreators(themeActions, dispatch)
-    switchTheme: () => dispatch(themeActions.setTheme())
+    switchTheme: () => dispatch(themeActions.setTheme()),
+    getWeatherForCity: id => dispatch(weatherActions.fetchWeather(id))
   };
 }
 
