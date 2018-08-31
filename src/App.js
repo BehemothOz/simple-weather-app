@@ -3,16 +3,10 @@ import classNames from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { bindActionCreators } from 'redux';
 
-import { connect } from 'react-redux';
-
-// import * as themeActions from './actions/themeActions';
-// import * as weatherActions from './actions/weatherActions';
-// import * as cityActions from './actions/cityActions';
-
 import './App.css';
 
 import { cities } from './shared/cities';
-import { composeUrl } from './helpers/composeUrl';
+
 import WeatherDisplay from './components/WeatherDisplay';
 import ButtonCity from './components/ButtonCity';
 import ButtonSwitch from './components/ButtonSwitch';
@@ -22,27 +16,6 @@ class App extends Component {
   componentDidMount() {
     // this.getWeatherForCity(this.state.currentCityId)();
   }
-
-  // getWeatherForCity = param => () => {
-  // const url = composeUrl(`id`, param);
-  // fetch(url)
-  //   .then(res => res.json())
-  //   .then(json => {
-  //     this.setState(
-  //       { cityWeather: json, currentCityId: param, isLoading: false },
-  //       this.hideLoadingIndicator
-  //     );
-  //   });
-  // const url = `https://jsonplaceholder.typicode.com/posts/${param}`;
-  // fetch(url)
-  //   .then(res => res.json())
-  //   .then(json => {
-  //     this.setState(
-  //       { cityWeather: json, currentCityId: param, isLoading: false },
-  //       this.hideLoadingIndicator
-  //     );
-  //   });
-  // };
 
   // hideLoadingIndicator() {
   //   setTimeout(() => {
@@ -57,7 +30,7 @@ class App extends Component {
         testId={city.newId}
         // city={city}
         // currentCityId={this.state.currentCityId}
-        // getWeatherForCity={this.props.getWeatherForCity}
+        getWeatherForCity={this.props.getWeatherForCity}
       />
     ));
   }
@@ -86,13 +59,13 @@ class App extends Component {
         </div>
         <div />
         <div className="info-container">
-          {/* <ReactCSSTransitionGroup
+          <ReactCSSTransitionGroup
             transitionName="switch"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
-          > */}
-          {weatherDisplay}
-          {/* </ReactCSSTransitionGroup> */}
+          >
+            {weatherDisplay}
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     );

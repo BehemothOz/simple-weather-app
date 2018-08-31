@@ -12,7 +12,6 @@ export default function ButtonCity(props) {
   //   button: true,
   //   active: currentCityId === id
   // });
-  console.log(props);
   // console.log(`props buttons`, props);
   return (
     // <button className={styleButton} onClick={props.getWeatherForCity(id)}>
@@ -20,7 +19,7 @@ export default function ButtonCity(props) {
     // </button>
     <button
       className="button"
-      // onClick={() => props.getWeatherForCity(props.city.newId)}
+      onClick={() => props.getWeatherForCity(props.testId)}
     >
       {`Button ${props.testId}`}
     </button>
