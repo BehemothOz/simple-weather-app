@@ -112,6 +112,7 @@ class App extends Component {
 // Чтение состояния
 // Трансформация текущего Redux-состояния хранилища в props
 function mapStateToProps(state) {
+  console.log(state);
   return {
     theme: state.theme
   };
