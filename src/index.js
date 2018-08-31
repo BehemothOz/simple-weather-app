@@ -7,9 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import configureStore from './store/configureStore';
 
-import * as counterActions from './actions/counterAction';
 import * as weatherActions from './actions/weatherActions';
-console.log(counterActions);
 
 const store = configureStore();
 
@@ -20,20 +18,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 registerServiceWorker();
-
-// store.subscribe(() => console.log(`state`, store.getState()));
-// console.log(1);
-// store.dispatch(counterActions.increment());
-// console.log(2);
-// store.dispatch(counterActions.increment());
-// console.log(3);
-// store.dispatch(counterActions.increment());
-// console.log(4);
-// store.dispatch(counterActions.reset());
-// console.log(5);
-// store.dispatch({ type: 'sdfdsf_dsfsd' });
-// console.log(6);
-// store.dispatch(counterActions.increment());
 
 // test weather fetch
 // store.subscribe(() => console.log(store.))

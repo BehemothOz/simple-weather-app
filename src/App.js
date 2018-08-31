@@ -94,8 +94,6 @@ class App extends Component {
           {/* <ButtonSwitch switchTheme={setTheme} /> */}
           <ButtonSwitch switchTheme={this.props.switchTheme} />
         </div>
-        <button>inc</button>
-        <button>reset</button>
         <div />
         <div className="info-container">
           <ReactCSSTransitionGroup
