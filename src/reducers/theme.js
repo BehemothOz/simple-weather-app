@@ -1,8 +1,9 @@
+import * as types from '../constants/actionTypes';
 const initialState = 'dark';
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case 'SET_THEME': {
+    case types.SET_THEME: {
       return state === 'dark' ? 'light' : 'dark';
     }
     default:

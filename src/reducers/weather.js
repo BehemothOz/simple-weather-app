@@ -1,3 +1,5 @@
+import * as types from '../constants/actionTypes';
+
 /*
   State
 {
@@ -8,16 +10,10 @@
 
 */
 
-import {
-  SELECT_CITY,
-  REQUEST_WEATHER,
-  RECEIVE_WEATHER
-} from '../actions/weatherActions';
-
 // initial state for selectedCity = 536203;
 function selectedCity(state = 536203, action) {
   switch (action.type) {
-    case SELECT_CITY:
+    case types.SELECT_CITY:
       return action.payload.id;
     default:
       return state;
@@ -27,9 +23,9 @@ function selectedCity(state = 536203, action) {
 // initial state: isLoading, cityWeater
 function weather(state = { isLoading: false, cityWeater: {} }, action) {
   switch (action.type) {
-    case REQUEST_WEATHER:
+    case types.REQUEST_WEATHER:
       return { ...state, isLoading: true };
-    case RECEIVE_WEATHER:
+    case types.RECEIVE_WEATHER:
       return {
         ...state,
         isLoading: false,

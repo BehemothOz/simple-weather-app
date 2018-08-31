@@ -1,3 +1,5 @@
+import * as types from '../constants/actionTypes';
+
 /*
   State
 {
@@ -9,10 +11,9 @@
 */
 
 // ----- Взаимодействие с пользователем ---------
-export const SELECT_CITY = 'SELECT_CITY';
 export function selectCity(id) {
   return {
-    type: SELECT_CITY,
+    type: types.SELECT_CITY,
     payload: {
       id
     }
@@ -22,21 +23,19 @@ export function selectCity(id) {
 // ------ Сетевые запросы --------
 
 // Запрос
-export const REQUEST_WEATHER = 'REQUEST_WEATHER';
 
 export function requestWeather(id) {
   return {
-    type: REQUEST_WEATHER,
+    type: types.REQUEST_WEATHER,
     payload: id
   };
 }
 
 // Ответ
-export const RECEIVE_WEATHER = 'RECEIVE_WEATHER';
 
 export function receiveWeather(json) {
   return {
-    type: RECEIVE_WEATHER,
+    type: types.RECEIVE_WEATHER,
     payload: {
       cityWeather: json
     }
