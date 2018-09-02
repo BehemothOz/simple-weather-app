@@ -10,8 +10,8 @@ export default function configureStore(initialState) {
     rootReducer,
     initialState,
     applyMiddleware(
-      thunkMiddleware // позволяет нам отправлять функции
-      // loggerMiddleware // аккуратно логируем действия
+      thunkMiddleware, // позволяет нам отправлять функции
+      loggerMiddleware // аккуратно логируем действия
     )
   );
 }
