@@ -24,19 +24,20 @@ class App extends Component {
   // }
 
   renderCitiesList() {
+    const { selectedCity } = this.props;
     return cities.map(city => (
       <ButtonCity
         key={city.newId}
         testId={city.newId}
         // city={city}
-        // currentCityId={this.state.currentCityId}
+        selectedCity={selectedCity}
         getWeatherForCity={this.props.getWeatherForCity}
       />
     ));
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { theme, isLoading, weatherCity } = this.props;
 
     const themeStyle = classNames({
@@ -54,8 +55,7 @@ class App extends Component {
       <div className={themeStyle}>
         <div className="cities-group">{this.renderCitiesList()}</div>
         <div className="button-switch-container">
-          {/* <ButtonSwitch switchTheme={setTheme} /> */}
-          {/* <ButtonSwitch switchTheme={this.props.switchTheme} /> */}
+          <ButtonSwitch switchTheme={this.props.switchTheme} />
         </div>
         <div />
         <div className="info-container">
@@ -64,7 +64,7 @@ class App extends Component {
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
           >
-            {weatherDisplay}
+            {/* {weatherDisplay} */}
           </ReactCSSTransitionGroup>
         </div>
       </div>

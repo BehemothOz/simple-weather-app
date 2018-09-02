@@ -13,7 +13,7 @@ function mapStateToProps(state) {
   console.log(state);
   return {
     theme: state.theme,
-    selectedCity: state.selectedCity,
+    selectedCity: state.weather.selectedCity,
     isLoading: state.loading,
     weatherCity: state.weather.cityWeather
   };

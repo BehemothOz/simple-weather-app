@@ -6,19 +6,19 @@ import './style.css';
 
 export default function ButtonCity(props) {
   // const { id, name } = props.weatherData;
-  // const { currentCityId } = props;
+  const { selectedCity } = props;
 
-  // const styleButton = classNames({
-  //   button: true,
-  //   active: currentCityId === id
-  // });
+  const styleButton = classNames({
+    button: true,
+    active: selectedCity === props.testId
+  });
   // console.log(`props buttons`, props);
   return (
     // <button className={styleButton} onClick={props.getWeatherForCity(id)}>
     //   {name}
     // </button>
     <button
-      className="button"
+      className={styleButton}
       onClick={() => props.getWeatherForCity(props.testId)}
     >
       {`Button ${props.testId}`}
