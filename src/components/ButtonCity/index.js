@@ -5,32 +5,23 @@ import classNames from 'classnames';
 import './style.css';
 
 export default function ButtonCity(props) {
-  // const { id, name } = props.weatherData;
-  const { selectedCity } = props;
+  const { id, name, selectedCity, getWeatherForCity } = props;
 
   const styleButton = classNames({
     button: true,
-    active: selectedCity === props.testId
+    active: selectedCity === id
   });
-  // console.log(`props buttons`, props);
+
   return (
-    // <button className={styleButton} onClick={props.getWeatherForCity(id)}>
-    //   {name}
-    // </button>
-    <button
-      className={styleButton}
-      onClick={() => props.getWeatherForCity(props.testId)}
-    >
-      {`Button ${props.testId}`}
+    <button className={styleButton} onClick={() => getWeatherForCity(id)}>
+      {name}
     </button>
   );
 }
 
-// PropTypes.ButtonCity = {
-//   city: PropTypes.shape({
-//     id: PropTypes.number,
-//     name: PropTypes.string
-//   }).isRequired,
-//   currentCityId: PropTypes.number.isRequired,
-//   getWeatherForCity: PropTypes.func.isRequired
-// };
+PropTypes.ButtonCity = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  selectedCity: PropTypes.number.isRequired,
+  getWeatherForCity: PropTypes.func.isRequired
+};

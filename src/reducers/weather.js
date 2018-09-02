@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  selectedCity: 1, //536203
+  selectedCity: 536203,
   isLoading: true,
   weatherCity: {}
 };

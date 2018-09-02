@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import { bindActionCreators } from 'redux';
 
 import './App.css';
 
@@ -17,19 +16,12 @@ class App extends Component {
     // this.getWeatherForCity(this.state.currentCityId)();
   }
 
-  // hideLoadingIndicator() {
-  //   setTimeout(() => {
-  //     this.setState({ isLoading: true });
-  //   }, 500);
-  // }
-
   renderCitiesList() {
     const { selectedCity } = this.props;
     return cities.map(city => (
       <ButtonCity
-        key={city.newId}
-        testId={city.newId}
-        // city={city}
+        key={city.id}
+        {...city}
         selectedCity={selectedCity}
         getWeatherForCity={this.props.getWeatherForCity}
       />
