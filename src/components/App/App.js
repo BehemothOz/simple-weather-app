@@ -29,8 +29,7 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.props);
-    const { theme, isLoading, weatherCity } = this.props;
+    const { theme, isLoading, weatherCity, switchTheme } = this.props;
 
     const themeStyle = classNames({
       'app-container': true,
@@ -47,7 +46,7 @@ class App extends Component {
       <div className={themeStyle}>
         <div className="cities-group">{this.renderCitiesList()}</div>
         <div className="button-switch-container">
-          <ButtonSwitch switchTheme={this.props.switchTheme} />
+          <ButtonSwitch switchTheme={switchTheme} />
         </div>
         <div />
         <div className="info-container">
