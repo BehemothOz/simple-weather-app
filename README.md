@@ -1,6 +1,6 @@
 ### Simple weather app
 
-##### Init
+#### Init
 
 ```
 npm install
