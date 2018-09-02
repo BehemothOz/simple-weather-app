@@ -45,7 +45,7 @@ class App extends Component {
       [`theme-${theme}`]: true
     });
 
-    const weatherDisplay = isLoading ? (
+    const weatherDisplay = !isLoading ? (
       <WeatherDisplay weatherData={weatherCity} key="weatherDisplay" />
     ) : (
       <Loading key="loading" />
@@ -64,7 +64,7 @@ class App extends Component {
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}
           >
-            {/* {weatherDisplay} */}
+            {weatherDisplay}
           </ReactCSSTransitionGroup>
         </div>
       </div>
