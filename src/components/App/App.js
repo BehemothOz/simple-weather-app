@@ -17,13 +17,13 @@ class App extends Component {
   }
 
   renderCitiesList() {
-    const { selectedCity } = this.props;
+    const { selectedCity, getWeatherForCity } = this.props;
     return cities.map(city => (
       <ButtonCity
         key={city.id}
         {...city}
         selectedCity={selectedCity}
-        getWeatherForCity={this.props.getWeatherForCity}
+        getWeatherForCity={getWeatherForCity}
       />
     ));
   }
@@ -37,7 +37,7 @@ class App extends Component {
     });
 
     const weatherDisplay = !isLoading ? (
-      <WeatherDisplay weatherData={weatherCity} key="weatherDisplay" />
+      <WeatherDisplay {...weatherCity} key="weatherDisplay" />
     ) : (
       <Loading key="loading" />
     );

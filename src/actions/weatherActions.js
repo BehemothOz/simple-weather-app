@@ -1,6 +1,6 @@
 import * as types from '../constants/actionTypes';
 import getUrl from '../api/api';
-// console.log(getUrl('id', 5));
+
 // Request
 export function requestWeather(id) {
   return {
