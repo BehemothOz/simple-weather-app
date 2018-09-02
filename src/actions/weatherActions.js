@@ -1,5 +1,6 @@
 import * as types from '../constants/actionTypes';
-
+import getUrl from '../api/api';
+// console.log(getUrl('id', 5));
 // Request
 export function requestWeather(id) {
   return {
@@ -23,13 +24,12 @@ export function fetchWeather(id) {
   return function(dispatch) {
     dispatch(requestWeather(id));
 
-    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(
-      response =>
-        response.json().then(json =>
-          setTimeout(() => {
-            dispatch(receiveWeather(json));
-          }, 500)
-        )
+    return fetch(getUrl('id', id)).then(response =>
+      response.json().then(json =>
+        setTimeout(() => {
+          dispatch(receiveWeather(json));
+        }, 500)
+      )
     );
   };
 }
