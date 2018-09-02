@@ -19,7 +19,7 @@ export default function ButtonCity(props) {
   );
 }
 
-PropTypes.ButtonCity = {
+ButtonCity.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   selectedCity: PropTypes.number.isRequired,
