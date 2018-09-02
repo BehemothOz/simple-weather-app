@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import './App.css';
 
-import { cities } from '../../shared/cities';
+import { cities } from '../../api/cities';
 
 import WeatherDisplay from '../WeatherDisplay';
 import ButtonCity from '../ButtonCity';
