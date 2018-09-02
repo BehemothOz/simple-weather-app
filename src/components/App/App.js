@@ -14,7 +14,7 @@ import Loading from '../Loading';
 
 class App extends Component {
   componentDidMount() {
-    // this.getWeatherForCity(this.state.currentCityId)();
+    this.props.getWeatherForCity(this.props.selectedCity);
   }
 
   renderCitiesList() {
