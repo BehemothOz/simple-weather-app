@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import App from '../App';
+import App from '../components/App/App';
 
 import * as themeActions from '../actions/themeActions';
 import * as weatherActions from '../actions/weatherActions';

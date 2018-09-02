@@ -5,12 +5,12 @@ import { bindActionCreators } from 'redux';
 
 import './App.css';
 
-import { cities } from './shared/cities';
+import { cities } from '../../shared/cities';
 
-import WeatherDisplay from './components/WeatherDisplay';
-import ButtonCity from './components/ButtonCity';
-import ButtonSwitch from './components/ButtonSwitch';
-import Loading from './components/Loading';
+import WeatherDisplay from '../WeatherDisplay';
+import ButtonCity from '../ButtonCity';
+import ButtonSwitch from '../ButtonSwitch';
+import Loading from '../Loading';
 
 class App extends Component {
   componentDidMount() {
