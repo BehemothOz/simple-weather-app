@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './App.css';
@@ -64,3 +65,12 @@ class App extends Component {
 }
 
 export default App;
+
+App.propTypes = {
+  theme: PropTypes.string.isRequired,
+  selectedCity: PropTypes.number.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  weatherCity: PropTypes.object.isRequired,
+  switchTheme: PropTypes.func.isRequired,
+  getWeatherForCity: PropTypes.func.isRequired
+};

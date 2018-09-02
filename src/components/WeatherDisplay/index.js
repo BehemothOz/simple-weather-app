@@ -7,7 +7,7 @@ export default function WeatherDisplay(props) {
   const { description, name, main, wind } = props;
   const weather = { ...props.weather }[0];
   const icon = 'https://openweathermap.org/img/w/' + weather.icon + '.png';
-  console.log(props);
+
   return (
     <div className="weather-info">
       <img className="icon" src={icon} alt={description} />
